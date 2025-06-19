@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HC Creative Product Selector</title>
+</head>
+<body>
+  <h2>HC Creative - Product Recommendation Form</h2>
+
+  <form id="productForm">
+    <label>Do you have a logo?</label><br />
+    <select id="logo">
+      <option value="0">No</option>
+      <option value="50">Yes</option>
+    </select><br /><br />
+
+    <label>Do you have a website?</label><br />
+    <select id="website">
+      <option value="0">No</option>
+      <option value="250">Yes</option>
+    </select><br /><br />
+
+    <label>What type of marketing?</label><br />
+    <select id="marketing">
+      <option value="800">Marketing A</option>
+      <option value="2000">Marketing B</option>
+    </select><br /><br />
+
+    <label>How many businesses do you have?</label><br />
+    <select id="business">
+      <option value="100">1 Business</option>
+      <option value="300">Multiple Businesses</option>
+    </select><br /><br />
+
+    <button type="button" onclick="calculateTotal()">Get Total & Product</button>
+  </form>
+
+  <h3 id="result"></h3>
+
+  <script>
+    function calculateTotal() {
+      const logo = parseInt(document.getElementById("logo").value);
+      const website = parseInt(document.getElementById("website").value);
+      const marketing = parseInt(document.getElementById("marketing").value);
+      const business = parseInt(document.getElementById("business").value);
+
+      const total = logo + website + marketing + business;
+
+      let product = "";
+      if (total <= 1000) {
+        product = "Impulso 360";
+      } else if (total <= 1600) {
+        product = "Visión Pro";
+      } else if (total <= 2300) {
+        product = "Presencia Signature";
+      } else {
+        product = "Impacto Elite";
+      }
+
+      document.getElementById("result").innerText =
+        `Total: $${total} | Recommended Product: ${product}`;
+    }
+  </script>
+</body>
+</html>
